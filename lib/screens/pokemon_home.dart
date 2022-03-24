@@ -16,11 +16,13 @@ class PokemonHomeApp extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           title: Text(
-              pageData.pageData == null ? 'Pokemon App' : 'Pokemon Database'),
+            pageData.pageData == null ? 'Pokemon App' : 'Pokemon Database',
+            style: TextStyle(fontSize: 20),
+          ),
           centerTitle: true,
           elevation: 0,
           foregroundColor: Colors.red,
-          backgroundColor: Colors.yellow,
+          backgroundColor: Colors.yellow[700],
           actions: [AppBarAction(pageCounter: pageCounter, pageData: pageData)],
         ),
         body: Stack(children: [

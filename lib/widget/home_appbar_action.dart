@@ -16,7 +16,10 @@ class AppBarAction extends StatelessWidget {
             pageCounter.decreasePage();
             pageData.getPokemonPage(pageCounter.counter);
           },
-          icon: Icon(Icons.arrow_left_outlined),
+          icon: Icon(
+            Icons.arrow_left_outlined,
+            size: 30,
+          ),
         ),
         Text(
           '${pageCounter.counter}',
@@ -27,7 +30,10 @@ class AppBarAction extends StatelessWidget {
               pageCounter.increasePage();
               pageData.getPokemonPage(pageCounter.counter);
             },
-            icon: Icon(Icons.arrow_right_outlined))
+            icon: Icon(
+              Icons.arrow_right_outlined,
+              size: 30,
+            ))
       ],
     );
   }
