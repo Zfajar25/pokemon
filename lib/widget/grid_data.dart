@@ -41,7 +41,7 @@ class GridWidget extends StatelessWidget {
                   }
                 },
                 child: Container(
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                         color: Colors.green,
                         borderRadius: BorderRadius.all(Radius.circular(20))),
                     child: Stack(children: [
@@ -59,11 +59,12 @@ class GridWidget extends StatelessWidget {
                         left: 5,
                         child: Text(
                           pageData.pageData!.thePokemonList[index].name
-                              .toUpperCase(),
-                          style: TextStyle(
+                              .capitalize(),
+                          style: const TextStyle(
                               color: Colors.black,
                               fontSize: 16,
-                              fontWeight: FontWeight.bold),
+                              fontWeight: FontWeight.w400,
+                              letterSpacing: 1),
                         ),
                       ),
                       Positioned(
@@ -74,7 +75,8 @@ class GridWidget extends StatelessWidget {
                           style: TextStyle(
                               color: Colors.black,
                               fontSize: 16,
-                              fontWeight: FontWeight.bold),
+                              fontWeight: FontWeight.bold,
+                              letterSpacing: 1),
                         ),
                       ),
                       Positioned(
@@ -89,5 +91,11 @@ class GridWidget extends StatelessWidget {
                     ])));
           }),
     ));
+  }
+}
+
+extension StringExtension on String {
+  String capitalize() {
+    return "${this[0].toUpperCase()}${this.substring(1).toLowerCase()}";
   }
 }

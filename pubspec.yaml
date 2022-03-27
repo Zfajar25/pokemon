@@ -72,5 +72,16 @@ flutter:
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
   #
+  fonts:
+    - family: Rubix
+      fonts:
+        - asset: assets/Rubik-Regular.ttf
+        - asset: assets/Rubik-Medium.ttf
+          weight: 600
+    - family: RumRaisin
+      fonts: 
+        - asset: assets/RumRaisin-Regular.ttf
+    
+
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

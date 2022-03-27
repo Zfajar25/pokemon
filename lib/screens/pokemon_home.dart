@@ -23,7 +23,11 @@ class PokemonHomeApp extends StatelessWidget {
           elevation: 0,
           foregroundColor: Colors.red,
           backgroundColor: Colors.yellow[700],
-          actions: [AppBarAction(pageCounter: pageCounter, pageData: pageData)],
+          actions: [
+            pageData.pageData == null
+                ? Container()
+                : AppBarAction(pageCounter: pageCounter, pageData: pageData)
+          ],
         ),
         body: Stack(children: [
           Image.asset(

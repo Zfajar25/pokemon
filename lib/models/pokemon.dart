@@ -54,6 +54,31 @@ class PokemonList {
 }
 
 // This is for the individual data of pokemon
+class PokemonIDDataProvider extends ChangeNotifier {
+  PokemonIndividual? _pokemonIndividual;
+  PokemonIndividual? get pokemonIndividualID => _pokemonIndividual;
+
+  set pokemonIndividualID(PokemonIndividual? value) {
+    _pokemonIndividual = value;
+    notifyListeners();
+  }
+
+  Future<PokemonIndividual?> getIndividualIDData(int id) async {
+    Response response =
+        await get(Uri.parse('https://pokeapi.co/api/v2/pokemon/$id/'));
+    var jsonResponse = jsonDecode(response.body);
+    PokemonIndividual data = PokemonIndividual.fromJson(jsonResponse);
+
+    pokemonIndividualID = data;
+    return pokemonIndividualID;
+  }
+}
+
+// THIS ABOVE
+// WILL BE USED RATHER THAN
+// THIS BELOW
+// (I WILL DO IT LATER)
+
 class PokemonDataProvider extends ChangeNotifier {
   PokemonIndividual? _pokemonIndividual;
   PokemonIndividual? get pokemonIndividual => _pokemonIndividual;
@@ -85,23 +110,32 @@ class PokemonIndividual {
   String name;
   int baseExperience;
   List<PokemonStats> thePokemonStats;
+  List<PokemonTypes> pokemonTypes;
+  List<PokemonAbilities> abilities;
 
   PokemonIndividual(
       {required this.baseExperience,
       required this.height,
       required this.name,
       required this.thePokemonStats,
-      required this.weight});
+      required this.weight,
+      required this.pokemonTypes,
+      required this.abilities});
 
   factory PokemonIndividual.fromJson(Map<String, dynamic> json) {
     var list = json['stats'] as List;
+    var list1 = json['types'] as List;
+    var list2 = json['abilities'] as List;
     return PokemonIndividual(
         baseExperience: json['base_experience'],
         height: json['height'],
         name: json['name'],
         weight: json['weight'],
         thePokemonStats:
-            list.map((data) => PokemonStats.fromJson(data)).toList());
+            list.map((data) => PokemonStats.fromJson(data)).toList(),
+        pokemonTypes: list1.map((data) => PokemonTypes.fromJson(data)).toList(),
+        abilities:
+            list2.map((data) => PokemonAbilities.fromJson(data)).toList());
   }
 }
 
@@ -130,6 +164,49 @@ class PokemonStatsName {
   }
 }
 
+class PokemonTypes {
+  PokemonType pokemonType;
+
+  PokemonTypes({required this.pokemonType});
+
+  factory PokemonTypes.fromJson(Map<String, dynamic> json) {
+    return PokemonTypes(pokemonType: PokemonType.fromJson(json['type']));
+  }
+}
+
+class PokemonType {
+  String name;
+
+  PokemonType({required this.name});
+
+  factory PokemonType.fromJson(Map<String, dynamic> json) {
+    return PokemonType(name: json['name']);
+  }
+}
+
+class PokemonAbilities {
+  bool isHidden;
+  PokemonAbility ability;
+
+  PokemonAbilities({required this.ability, required this.isHidden});
+
+  factory PokemonAbilities.fromJson(Map<String, dynamic> json) {
+    return PokemonAbilities(
+        ability: PokemonAbility.fromJson(json['ability']),
+        isHidden: json['is_hidden']);
+  }
+}
+
+class PokemonAbility {
+  String name;
+
+  PokemonAbility({required this.name});
+
+  factory PokemonAbility.fromJson(Map<String, dynamic> json) {
+    return PokemonAbility(name: json['name']);
+  }
+}
+
 class CounterProvider extends ChangeNotifier {
   int _counter = 0;
   int get counter => _counter;
@@ -150,5 +227,27 @@ class CounterProvider extends ChangeNotifier {
       _counter = 0;
     }
     notifyListeners();
+  }
+}
+
+class IDCounterProvider extends ChangeNotifier {
+  int _idCounter = 0;
+  int get idCounter => _idCounter;
+
+  void increaseID(int id) {
+    _idCounter = id;
+    _idCounter++;
+    notifyListeners();
+  }
+
+  void decreaseID(int id) {
+    if (_idCounter != 0) {
+      _idCounter = id;
+      _idCounter--;
+      notifyListeners();
+    } else {
+      _idCounter = 0;
+      notifyListeners();
+    }
   }
 }
