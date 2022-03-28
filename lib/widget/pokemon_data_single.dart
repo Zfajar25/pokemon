@@ -175,7 +175,6 @@ class PokemonSingleDataInside extends StatelessWidget {
         right: screenWidth * 0.25,
         child: Container(
           height: 50,
-          color: Colors.white,
           child: ChangeID(
             pokemonDataID: pokemonDataID,
             pageData: pageData,

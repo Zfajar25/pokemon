@@ -13,6 +13,11 @@ class ChangeIDButton extends StatelessWidget {
       required this.index})
       : super(key: key);
 
+  // I DONT KNOW HOW TO CHANGE DATA BECAUSE THE PROVIDER IS BEFORE THE NAVIGATIO.PUSH
+  // SO THE DATA THAT CHANGE IS IN THE PREVIOUS SCREEN
+  // BUT I DONT KNOW HOW TO REBUILD IT AGAIN INSIDE THIS SCREEN
+  // HAAALLPPPPPP :((
+
   @override
   Widget build(BuildContext context) {
     var idChangeCounter = Provider.of<IDCounterProvider>(context);
