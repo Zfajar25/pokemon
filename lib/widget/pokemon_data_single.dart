@@ -1,49 +1,58 @@
 import 'package:flutter/material.dart';
 import 'package:pokemon_app_3/models/pokemon.dart';
 import 'package:pokemon_app_3/widget/pokemon_stats_data.dart';
+import 'package:pokemon_app_3/wrappers/change_id.dart';
 
 class PokemonSingleDataInside extends StatelessWidget {
-  final PokemonDataProvider pokemonData;
+  final PokemonIDDataProvider pokemonDataID;
   final PokemonPageProvider pageData;
   final int index;
   const PokemonSingleDataInside(
       {Key? key,
-      required this.pokemonData,
+      required this.pokemonDataID,
       required this.pageData,
       required this.index})
       : super(key: key);
 
   getColor(int number) {
     Color? color = Colors.white;
-    if (pokemonData.pokemonIndividual!.pokemonTypes[number].pokemonType.name ==
+    if (pokemonDataID
+            .pokemonIndividualID!.pokemonTypes[number].pokemonType.name ==
         'grass') {
       return color = Colors.green;
     }
-    if (pokemonData.pokemonIndividual!.pokemonTypes[number].pokemonType.name ==
+    if (pokemonDataID
+            .pokemonIndividualID!.pokemonTypes[number].pokemonType.name ==
         'poison') {
       return color = Colors.grey;
     }
-    if (pokemonData.pokemonIndividual!.pokemonTypes[number].pokemonType.name ==
+    if (pokemonDataID
+            .pokemonIndividualID!.pokemonTypes[number].pokemonType.name ==
         'fire') {
       return color = Colors.red;
     }
-    if (pokemonData.pokemonIndividual!.pokemonTypes[number].pokemonType.name ==
+    if (pokemonDataID
+            .pokemonIndividualID!.pokemonTypes[number].pokemonType.name ==
         'water') {
       return color = Colors.blue;
     }
-    if (pokemonData.pokemonIndividual!.pokemonTypes[number].pokemonType.name ==
+    if (pokemonDataID
+            .pokemonIndividualID!.pokemonTypes[number].pokemonType.name ==
         'flying') {
       return color = Colors.orange;
     }
-    if (pokemonData.pokemonIndividual!.pokemonTypes[number].pokemonType.name ==
+    if (pokemonDataID
+            .pokemonIndividualID!.pokemonTypes[number].pokemonType.name ==
         'ground') {
       return color = Colors.brown;
     }
-    if (pokemonData.pokemonIndividual!.pokemonTypes[number].pokemonType.name ==
+    if (pokemonDataID
+            .pokemonIndividualID!.pokemonTypes[number].pokemonType.name ==
         'electric') {
       return color = Colors.cyan[400];
     }
-    if (pokemonData.pokemonIndividual!.pokemonTypes[number].pokemonType.name ==
+    if (pokemonDataID
+            .pokemonIndividualID!.pokemonTypes[number].pokemonType.name ==
         'psychic') {
       return color = Colors.purple;
     }
@@ -62,7 +71,7 @@ class PokemonSingleDataInside extends StatelessWidget {
           height: 300,
           width: 90,
           child: ListView.builder(
-              itemCount: pokemonData.pokemonIndividual!.pokemonTypes.length,
+              itemCount: pokemonDataID.pokemonIndividualID!.pokemonTypes.length,
               itemBuilder: (context, number) {
                 return Container(
                   margin: const EdgeInsets.only(top: 10),
@@ -72,7 +81,7 @@ class PokemonSingleDataInside extends StatelessWidget {
                       borderRadius: BorderRadius.all(Radius.circular(5))),
                   child: Center(
                     child: Text(
-                      pokemonData.pokemonIndividual!.pokemonTypes[number]
+                      pokemonDataID.pokemonIndividualID!.pokemonTypes[number]
                           .pokemonType.name
                           .capitalize(),
                       style: TextStyle(fontSize: 20, fontFamily: 'Rubix'),
@@ -118,11 +127,12 @@ class PokemonSingleDataInside extends StatelessWidget {
                             mainAxisSpacing: 5,
                             crossAxisSpacing: 5,
                             childAspectRatio: 1),
-                    itemCount: pokemonData.pokemonIndividual!.abilities.length,
+                    itemCount:
+                        pokemonDataID.pokemonIndividualID!.abilities.length,
                     itemBuilder: (context, index) {
                       return Text(
-                        pokemonData
-                            .pokemonIndividual!.abilities[index].ability.name
+                        pokemonDataID
+                            .pokemonIndividualID!.abilities[index].ability.name
                             .capitalize(),
                         style: TextStyle(
                             fontSize: 16,
@@ -149,16 +159,30 @@ class PokemonSingleDataInside extends StatelessWidget {
         bottom: 0,
         child: Container(
           width: screenWidth,
-          height: screenHeight * 0.59,
+          height: screenHeight * 0.5,
           decoration: BoxDecoration(
               color: Colors.grey[400],
               borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(40), topRight: Radius.circular(40))),
           child: PokemonStatsData(
-            pokemonData: pokemonData,
+            pokemonDataID: pokemonDataID,
           ),
         ),
       ),
+      Positioned(
+        bottom: screenHeight * 0.05,
+        left: screenWidth * 0.25,
+        right: screenWidth * 0.25,
+        child: Container(
+          height: 50,
+          color: Colors.white,
+          child: ChangeID(
+            pokemonDataID: pokemonDataID,
+            pageData: pageData,
+            index: index,
+          ),
+        ),
+      )
     ]);
   }
 }

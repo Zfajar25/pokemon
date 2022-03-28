@@ -17,6 +17,9 @@ class PokemonHomeWrapper extends StatelessWidget {
             create: (context) => PokemonDataProvider()),
         ChangeNotifierProvider<PokemonPageProvider>(
             create: (context) => PokemonPageProvider()),
+        ChangeNotifierProvider<PokemonIDDataProvider>(
+          create: (context) => PokemonIDDataProvider(),
+        )
       ],
       builder: (context, child) {
         return PokemonHomeApp();

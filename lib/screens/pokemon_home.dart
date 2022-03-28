@@ -13,6 +13,7 @@ class PokemonHomeApp extends StatelessWidget {
     final pageData = Provider.of<PokemonPageProvider>(context);
     final pokemonData = Provider.of<PokemonDataProvider>(context);
     final pageCounter = Provider.of<CounterProvider>(context);
+    final pokemonDataID = Provider.of<PokemonIDDataProvider>(context);
     return Scaffold(
         appBar: AppBar(
           title: Text(
@@ -41,7 +42,7 @@ class PokemonHomeApp extends StatelessWidget {
                   pageData: pageData,
                   pageCounter: pageCounter,
                 )
-              : GridWidget(pageData: pageData, pokemonData: pokemonData),
+              : GridWidget(pageData: pageData, pokemonDataID: pokemonDataID),
         ]));
   }
 }

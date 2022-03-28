@@ -77,7 +77,8 @@ class PokemonIDDataProvider extends ChangeNotifier {
 // THIS ABOVE
 // WILL BE USED RATHER THAN
 // THIS BELOW
-// (I WILL DO IT LATER)
+// (I WILL DO IT LATER TOO MANY MUST CHANGE)
+// UPDATE: IT HAS BEEN CHANGE
 
 class PokemonDataProvider extends ChangeNotifier {
   PokemonIndividual? _pokemonIndividual;
@@ -241,13 +242,8 @@ class IDCounterProvider extends ChangeNotifier {
   }
 
   void decreaseID(int id) {
-    if (_idCounter != 0) {
-      _idCounter = id;
-      _idCounter--;
-      notifyListeners();
-    } else {
-      _idCounter = 0;
-      notifyListeners();
-    }
+    _idCounter = id;
+    _idCounter--;
+    notifyListeners();
   }
 }

@@ -3,8 +3,8 @@ import 'package:pokemon_app_3/constant/stat_text_style.dart';
 import 'package:pokemon_app_3/models/pokemon.dart';
 
 class PokemonStatsData extends StatelessWidget {
-  final PokemonDataProvider pokemonData;
-  const PokemonStatsData({Key? key, required this.pokemonData})
+  final PokemonIDDataProvider pokemonDataID;
+  const PokemonStatsData({Key? key, required this.pokemonDataID})
       : super(key: key);
 
   @override
@@ -61,36 +61,44 @@ class PokemonStatsData extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  Text(pokemonData.pokemonIndividual!.name.toCapitalize(),
+                  Text(pokemonDataID.pokemonIndividualID!.name.toCapitalize(),
                       style: statsStyle),
                   Text(
-                      pokemonData.pokemonIndividual!.thePokemonStats[0].baseStat
+                      pokemonDataID
+                          .pokemonIndividualID!.thePokemonStats[0].baseStat
                           .toString(),
                       style: statsStyle),
                   Text(
-                      pokemonData.pokemonIndividual!.thePokemonStats[1].baseStat
+                      pokemonDataID
+                          .pokemonIndividualID!.thePokemonStats[1].baseStat
                           .toString(),
                       style: statsStyle),
                   Text(
-                      pokemonData.pokemonIndividual!.thePokemonStats[2].baseStat
+                      pokemonDataID
+                          .pokemonIndividualID!.thePokemonStats[2].baseStat
                           .toString(),
                       style: statsStyle),
-                  Text(pokemonData.pokemonIndividual!.weight.toString(),
+                  Text(pokemonDataID.pokemonIndividualID!.weight.toString(),
                       style: statsStyle),
-                  Text(pokemonData.pokemonIndividual!.height.toString(),
-                      style: statsStyle),
-                  Text(pokemonData.pokemonIndividual!.baseExperience.toString(),
+                  Text(pokemonDataID.pokemonIndividualID!.height.toString(),
                       style: statsStyle),
                   Text(
-                      pokemonData.pokemonIndividual!.thePokemonStats[3].baseStat
-                          .toString(),
-                      style: statsStyle),
-                  Text(
-                      pokemonData.pokemonIndividual!.thePokemonStats[4].baseStat
+                      pokemonDataID.pokemonIndividualID!.baseExperience
                           .toString(),
                       style: statsStyle),
                   Text(
-                      pokemonData.pokemonIndividual!.thePokemonStats[5].baseStat
+                      pokemonDataID
+                          .pokemonIndividualID!.thePokemonStats[3].baseStat
+                          .toString(),
+                      style: statsStyle),
+                  Text(
+                      pokemonDataID
+                          .pokemonIndividualID!.thePokemonStats[4].baseStat
+                          .toString(),
+                      style: statsStyle),
+                  Text(
+                      pokemonDataID
+                          .pokemonIndividualID!.thePokemonStats[5].baseStat
                           .toString(),
                       style: statsStyle),
                 ],

@@ -6,21 +6,21 @@ import 'package:pokemon_app_3/widget/pokemon_data_single.dart';
 class PokemonSingleData extends StatelessWidget {
   const PokemonSingleData(
       {Key? key,
-      required this.pokemonData,
+      required this.pokemonDataID,
       required this.pageData,
       required this.index})
       : super(key: key);
-  final PokemonDataProvider pokemonData;
+  final PokemonIDDataProvider pokemonDataID;
   final PokemonPageProvider pageData;
   final int index;
   @override
   Widget build(BuildContext context) {
-    return pokemonData.pokemonIndividual != null
+    return pokemonDataID.pokemonIndividualID != null
         ? Scaffold(
             backgroundColor: Colors.yellowAccent,
             appBar: AppBar(
               title: Text(
-                pokemonData.pokemonIndividual!.name.toUpperCase(),
+                pokemonDataID.pokemonIndividualID!.name.toUpperCase(),
                 style: const TextStyle(fontWeight: FontWeight.bold),
               ),
               centerTitle: true,
@@ -29,7 +29,7 @@ class PokemonSingleData extends StatelessWidget {
               backgroundColor: Colors.yellow,
             ),
             body: PokemonSingleDataInside(
-              pokemonData: pokemonData,
+              pokemonDataID: pokemonDataID,
               pageData: pageData,
               index: index,
             ),

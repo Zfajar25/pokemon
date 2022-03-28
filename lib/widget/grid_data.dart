@@ -5,10 +5,10 @@ import 'package:pokemon_app_3/widget/loading.dart';
 import 'package:provider/provider.dart';
 
 class GridWidget extends StatelessWidget {
-  GridWidget({Key? key, required this.pageData, required this.pokemonData})
+  GridWidget({Key? key, required this.pageData, required this.pokemonDataID})
       : super(key: key);
   PokemonPageProvider pageData;
-  PokemonDataProvider pokemonData;
+  PokemonIDDataProvider pokemonDataID;
   var result;
 
   @override
@@ -27,7 +27,8 @@ class GridWidget extends StatelessWidget {
             return GestureDetector(
                 behavior: HitTestBehavior.opaque,
                 onTap: () async {
-                  result = await pokemonData.getIndividualData(index, pageData);
+                  result = await pokemonDataID.getIndividualIDData(
+                      pageData.pageData!.thePokemonList[index].id);
                   if (result == null) {
                     LoadingWidget();
                   } else {
@@ -35,7 +36,7 @@ class GridWidget extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                             builder: (context) => PokemonSingleData(
-                                pokemonData: pokemonData,
+                                pokemonDataID: pokemonDataID,
                                 pageData: pageData,
                                 index: index)));
                   }
