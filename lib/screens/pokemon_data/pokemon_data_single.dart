@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:pokemon_app_3/models/pokemon.dart';
-import 'package:pokemon_app_3/widget/pokemon_stats_data.dart';
-import 'package:pokemon_app_3/wrappers/change_id.dart';
+import 'package:pokemon_app_3/screens/pokemon_data/change_id_button.dart';
+import 'package:pokemon_app_3/screens/pokemon_data/pokemon_stats_data.dart';
 
 class PokemonSingleDataInside extends StatelessWidget {
   final PokemonIDDataProvider pokemonDataID;
   final PokemonPageProvider pageData;
+  final IDCounterProvider idChangeCounter;
   final int index;
   const PokemonSingleDataInside(
       {Key? key,
       required this.pokemonDataID,
       required this.pageData,
-      required this.index})
+      required this.index,
+      required this.idChangeCounter})
       : super(key: key);
 
   getColor(int number) {
@@ -149,7 +151,9 @@ class PokemonSingleDataInside extends StatelessWidget {
         top: 0,
         left: screenWidth * 0.25,
         child: Image.network(
-          pageData.pageData!.thePokemonList[index].imageUrl,
+          pokemonDataID.getImageUrl(idChangeCounter.idCounter == 0
+              ? pageData.pageData!.thePokemonList[index].id
+              : idChangeCounter.idCounter),
           width: 200,
           height: 200,
           fit: BoxFit.contain,
@@ -175,9 +179,10 @@ class PokemonSingleDataInside extends StatelessWidget {
         right: screenWidth * 0.25,
         child: Container(
           height: 50,
-          child: ChangeID(
+          child: ChangeIDButton(
             pokemonDataID: pokemonDataID,
             pageData: pageData,
+            idChangeCounter: idChangeCounter,
             index: index,
           ),
         ),
@@ -188,6 +193,6 @@ class PokemonSingleDataInside extends StatelessWidget {
 
 extension StringExtension on String {
   String capitalize() {
-    return "${this[0].toUpperCase()}${this.substring(1).toLowerCase()}";
+    return "${this[0].toUpperCase()}${substring(1).toLowerCase()}";
   }
 }

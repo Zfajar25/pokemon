@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:pokemon_app_3/models/pokemon.dart';
-import 'package:pokemon_app_3/screens/pokemon_data.dart';
-import 'package:pokemon_app_3/widget/loading.dart';
-import 'package:provider/provider.dart';
+import 'package:pokemon_app_3/wrappers/pokemon_data_wrapper.dart';
 
 class GridWidget extends StatelessWidget {
-  GridWidget({Key? key, required this.pageData, required this.pokemonDataID})
+  const GridWidget(
+      {Key? key, required this.pageData, required this.pokemonDataID})
       : super(key: key);
-  PokemonPageProvider pageData;
-  PokemonIDDataProvider pokemonDataID;
-  var result;
+  final PokemonPageProvider pageData;
+  final PokemonIDDataProvider pokemonDataID;
 
   @override
   Widget build(BuildContext context) {
@@ -27,19 +25,16 @@ class GridWidget extends StatelessWidget {
             return GestureDetector(
                 behavior: HitTestBehavior.opaque,
                 onTap: () async {
-                  result = await pokemonDataID.getIndividualIDData(
+                  await pokemonDataID.getIndividualIDData(
                       pageData.pageData!.thePokemonList[index].id);
-                  if (result == null) {
-                    LoadingWidget();
-                  } else {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => PokemonSingleData(
-                                pokemonDataID: pokemonDataID,
-                                pageData: pageData,
-                                index: index)));
-                  }
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => PokemonSingleDataWrapper(
+                            pokemonDataID: pokemonDataID,
+                            pageData: pageData,
+                            index: index),
+                      ));
                 },
                 child: Container(
                     decoration: const BoxDecoration(
@@ -97,6 +92,6 @@ class GridWidget extends StatelessWidget {
 
 extension StringExtension on String {
   String capitalize() {
-    return "${this[0].toUpperCase()}${this.substring(1).toLowerCase()}";
+    return "${this[0].toUpperCase()}${substring(1).toLowerCase()}";
   }
 }

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pokemon_app_3/models/pokemon.dart';
-import 'package:pokemon_app_3/widget/grid_data.dart';
-import 'package:pokemon_app_3/widget/home_appbar_action.dart';
-import 'package:pokemon_app_3/widget/home_button.dart';
+import 'package:pokemon_app_3/screens/pokemon_home/grid_data.dart';
+import 'package:pokemon_app_3/screens/pokemon_home/home_appbar_action.dart';
+import 'package:pokemon_app_3/screens/pokemon_home/home_button.dart';
 import 'package:provider/provider.dart';
 
 class PokemonHomeApp extends StatelessWidget {
@@ -11,7 +11,6 @@ class PokemonHomeApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final pageData = Provider.of<PokemonPageProvider>(context);
-    final pokemonData = Provider.of<PokemonDataProvider>(context);
     final pageCounter = Provider.of<CounterProvider>(context);
     final pokemonDataID = Provider.of<PokemonIDDataProvider>(context);
     return Scaffold(

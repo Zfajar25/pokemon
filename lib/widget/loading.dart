@@ -7,7 +7,7 @@ class LoadingWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         color: Colors.yellow,
-        child: Center(
+        child: const Center(
           child: CircularProgressIndicator(
             color: Colors.red,
             semanticsLabel: 'Please Wait',

@@ -27,7 +27,7 @@ class HomeButton extends StatelessWidget {
             style: ElevatedButton.styleFrom(
                 primary: Colors.red,
                 onPrimary: Colors.yellow,
-                shape: RoundedRectangleBorder()),
+                shape: const RoundedRectangleBorder()),
           )
         ],
       ),

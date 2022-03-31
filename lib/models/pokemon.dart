@@ -63,6 +63,12 @@ class PokemonIDDataProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  String getImageUrl(int id) {
+    String imageurl =
+        'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/$id.png';
+    return imageurl;
+  }
+
   Future<PokemonIndividual?> getIndividualIDData(int id) async {
     Response response =
         await get(Uri.parse('https://pokeapi.co/api/v2/pokemon/$id/'));

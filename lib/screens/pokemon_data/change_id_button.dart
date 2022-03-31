@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:pokemon_app_3/models/pokemon.dart';
-import 'package:provider/provider.dart';
 
 class ChangeIDButton extends StatelessWidget {
   final PokemonIDDataProvider pokemonDataID;
+  final IDCounterProvider idChangeCounter;
   final PokemonPageProvider pageData;
   final int index;
   const ChangeIDButton(
       {Key? key,
       required this.pageData,
       required this.pokemonDataID,
-      required this.index})
+      required this.index,
+      required this.idChangeCounter})
       : super(key: key);
 
   // I DONT KNOW HOW TO CHANGE DATA BECAUSE THE PROVIDER IS BEFORE THE NAVIGATIO.PUSH
@@ -20,16 +21,19 @@ class ChangeIDButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var idChangeCounter = Provider.of<IDCounterProvider>(context);
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         ElevatedButton(
-          onPressed: () {
-            idChangeCounter
-                .decreaseID(pageData.pageData!.thePokemonList[index].id);
+          onPressed: () async {
+            idChangeCounter.idCounter == 0
+                ? idChangeCounter
+                    .decreaseID(pageData.pageData!.thePokemonList[index].id)
+                : idChangeCounter.decreaseID(idChangeCounter.idCounter);
             //TODO
-            //CHANGE THE DATA WITHIN SCREEN
+            //CHANGE THE DATA WITHIN SCREEN (DONE)
+            //CHANGE PICTURE OF POKEMON
+            await pokemonDataID.getIndividualIDData(idChangeCounter.idCounter);
           },
           child: Icon(
             Icons.arrow_left,
@@ -49,11 +53,15 @@ class ChangeIDButton extends StatelessWidget {
         ),
         Spacer(),
         ElevatedButton(
-          onPressed: () {
-            idChangeCounter
-                .increaseID(pageData.pageData!.thePokemonList[index].id);
+          onPressed: () async {
+            idChangeCounter.idCounter == 0
+                ? idChangeCounter
+                    .increaseID(pageData.pageData!.thePokemonList[index].id)
+                : idChangeCounter.increaseID(idChangeCounter.idCounter);
             //TODO
-            //CHANGE THE DATA WITHIN SCREEN
+            //CHANGE THE DATA WITHIN SCREEN (DOOOONEEEE)
+            //CHANGE PICTURE OF POKEMON
+            await pokemonDataID.getIndividualIDData(idChangeCounter.idCounter);
           },
           child: Icon(
             Icons.arrow_right,
