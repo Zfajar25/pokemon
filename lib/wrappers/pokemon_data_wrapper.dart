@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pokemon_app_3/models/pokemon.dart';
+import 'package:pokemon_app_3/models/pokemon_type_affinity.dart';
 import 'package:pokemon_app_3/screens/pokemon_data.dart';
 import 'package:provider/provider.dart';
 
@@ -23,6 +24,9 @@ class PokemonSingleDataWrapper extends StatelessWidget {
         ChangeNotifierProvider<PokemonPageProvider>.value(value: pageData),
         ChangeNotifierProvider<IDCounterProvider>(
             create: (context) => IDCounterProvider()),
+        ChangeNotifierProvider<PokemonTypeAffinityProvider>(
+          create: (context) => PokemonTypeAffinityProvider(),
+        )
       ],
       builder: (context, child) => PokemonSingleData(
           // pageData: pageData,

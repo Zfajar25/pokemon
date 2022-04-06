@@ -16,21 +16,21 @@ class AppBarAction extends StatelessWidget {
             pageCounter.decreasePage();
             pageData.getPokemonPage(pageCounter.counter);
           },
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_left_outlined,
             size: 30,
           ),
         ),
         Text(
           '${pageCounter.counter}',
-          style: TextStyle(color: Colors.black, fontSize: 16),
+          style: const TextStyle(color: Colors.black, fontSize: 16),
         ),
         IconButton(
             onPressed: () {
               pageCounter.increasePage();
               pageData.getPokemonPage(pageCounter.counter);
             },
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_right_outlined,
               size: 30,
             ))

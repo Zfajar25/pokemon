@@ -18,6 +18,7 @@ class ChangeIDButton extends StatelessWidget {
   // SO THE DATA THAT CHANGE IS IN THE PREVIOUS SCREEN
   // BUT I DONT KNOW HOW TO REBUILD IT AGAIN INSIDE THIS SCREEN
   // HAAALLPPPPPP :((
+  // UPDATE: IT IS DONE
 
   @override
   Widget build(BuildContext context) {
@@ -32,26 +33,26 @@ class ChangeIDButton extends StatelessWidget {
                 : idChangeCounter.decreaseID(idChangeCounter.idCounter);
             //TODO
             //CHANGE THE DATA WITHIN SCREEN (DONE)
-            //CHANGE PICTURE OF POKEMON
+            //CHANGE PICTURE OF POKEMON (DONE)
             await pokemonDataID.getIndividualIDData(idChangeCounter.idCounter);
           },
-          child: Icon(
+          child: const Icon(
             Icons.arrow_left,
             size: 30,
           ),
           style: ElevatedButton.styleFrom(
               primary: Colors.red,
               onPrimary: Colors.yellow,
-              animationDuration: Duration(milliseconds: 500)),
+              animationDuration: const Duration(milliseconds: 500)),
         ),
-        Spacer(),
+        const Spacer(),
         Text(
           idChangeCounter.idCounter == 0
               ? '${pageData.pageData!.thePokemonList[index].id}'
               : '${idChangeCounter.idCounter}',
-          style: TextStyle(fontSize: 16),
+          style: const TextStyle(fontSize: 16),
         ),
-        Spacer(),
+        const Spacer(),
         ElevatedButton(
           onPressed: () async {
             idChangeCounter.idCounter == 0
@@ -60,17 +61,17 @@ class ChangeIDButton extends StatelessWidget {
                 : idChangeCounter.increaseID(idChangeCounter.idCounter);
             //TODO
             //CHANGE THE DATA WITHIN SCREEN (DOOOONEEEE)
-            //CHANGE PICTURE OF POKEMON
+            //CHANGE PICTURE OF POKEMON (DONE)
             await pokemonDataID.getIndividualIDData(idChangeCounter.idCounter);
           },
-          child: Icon(
+          child: const Icon(
             Icons.arrow_right,
             size: 30,
           ),
           style: ElevatedButton.styleFrom(
               primary: Colors.red,
               onPrimary: Colors.yellow,
-              animationDuration: Duration(milliseconds: 500)),
+              animationDuration: const Duration(milliseconds: 500)),
         )
       ],
     );

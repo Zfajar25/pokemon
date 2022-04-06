@@ -10,7 +10,8 @@ class HomeButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Positioned.fill(
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
             'Welcome to Pokemon Database App',

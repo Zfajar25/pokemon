@@ -22,6 +22,7 @@ class PokemonPageProvider extends ChangeNotifier {
   }
 }
 
+// Models for Pokemon JSON page data
 class PokemonPage {
   String loadNextPage;
   List<PokemonList> thePokemonList;
@@ -63,12 +64,14 @@ class PokemonIDDataProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+// Get pokemon image based on id change
   String getImageUrl(int id) {
     String imageurl =
         'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/$id.png';
     return imageurl;
   }
 
+// Call API request for pokemon JSON data
   Future<PokemonIndividual?> getIndividualIDData(int id) async {
     Response response =
         await get(Uri.parse('https://pokeapi.co/api/v2/pokemon/$id/'));
@@ -111,6 +114,7 @@ class PokemonDataProvider extends ChangeNotifier {
   }
 }
 
+// Models for Pokemon JSON data
 class PokemonIndividual {
   int weight;
   int height;

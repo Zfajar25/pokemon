@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pokemon_app_3/models/pokemon.dart';
-import 'package:pokemon_app_3/screens/pokemon_data/pokemon_data_single.dart';
+import 'package:pokemon_app_3/models/pokemon_type_affinity.dart';
+import 'package:pokemon_app_3/screens/pokemon_data/pokemon_single_data_inside.dart';
 import 'package:pokemon_app_3/widget/loading.dart';
 import 'package:provider/provider.dart';
 
@@ -19,6 +20,7 @@ class PokemonSingleData extends StatelessWidget {
     var pokemonDataID = Provider.of<PokemonIDDataProvider>(context);
     var pageData = Provider.of<PokemonPageProvider>(context);
     var idChangeCounter = Provider.of<IDCounterProvider>(context);
+    var pokemonType = Provider.of<PokemonTypeAffinityProvider>(context);
     return pokemonDataID.pokemonIndividualID != null
         ? Scaffold(
             backgroundColor: Colors.yellowAccent,
@@ -37,6 +39,7 @@ class PokemonSingleData extends StatelessWidget {
               pageData: pageData,
               index: index,
               idChangeCounter: idChangeCounter,
+              pokemonType: pokemonType,
             ),
           )
         : const LoadingWidget();
